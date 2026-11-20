@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Zelvak Client</title>
+<style>
+:root{
+  --acc:#22c55e; --acc2:#4ade80; --bg:#070b12; --bg2:#0b111f; --card:#111827; --line:#ffffff14;
+  --text:#f4f7fb; --mut:#9aa7b8; --r:18px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1100px 620px at 12% -12%, #22c55e22, transparent 60%),
+    radial-gradient(900px 520px at 92% 4%, #3b82f61a, transparent 62%),
+    radial-gradient(700px 500px at 50% 110%, #a855f71a, transparent 60%),
+    var(--bg);
+  color:var(--text); font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  min-height:100vh; overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ---------- password gate ---------- */
+#gate{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:22px;
+  background:radial-gradient(900px 600px at 50% 20%,#22c55e18,transparent 60%),#05080e}
+.gcard{width:min(430px,100%);padding:34px 30px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(160deg,#ffffff0d,#ffffff03);backdrop-filter:blur(14px);
+  box-shadow:0 30px 90px #0009, inset 0 1px 0 #ffffff12;text-align:center}
+.zlogo{width:66px;height:66px;border-radius:19px;display:grid;place-items:center;margin:0 auto 16px;
+  background:linear-gradient(145deg,var(--acc2),#059669);color:#04140a;font-weight:900;font-size:34px;
+  box-shadow:0 14px 34px #22c55e44, inset 0 1px 0 #ffffff66}
+.gcard h1{font-size:22px;margin:0 0 6px;letter-spacing:.3px}
+.gcard p{margin:0 0 20px;color:var(--mut);font-size:13.5px;line-height:1.55}
+.pin{display:flex;gap:9px}
+.pin input{flex:1;min-width:0;padding:13px 15px;border-radius:12px;border:1px solid #ffffff20;
+  background:#00000042;color:var(--text);font-size:17px;letter-spacing:.35em;outline:none;text-align:center}
+.pin input:focus{border-color:#22c55e88;box-shadow:0 0 0 3px #22c55e22}
+.pin button{padding:0 20px;border-radius:12px;border:0;background:linear-gradient(145deg,var(--acc2),#16a34a);
+  color:#04140a;font-weight:800;cursor:pointer;box-shadow:0 8px 22px #22c55e33}
+.pin button:hover{filter:brightness(1.07)}
+.gerr{min-height:20px;margin-top:12px;font-size:12.5px;color:#fca5a5}
+.gfoot{margin-top:16px;font-size:11px;color:#66758a}
+.shake{animation:shake .35s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+
+/* ---------- site ---------- */
+#site[hidden]{display:none}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
+  background:#070b12cc;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:14px;height:68px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.4px}
+.brand .b{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--acc2),#059669);color:#04140a;font-weight:900}
+.navlinks{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.navlinks a{padding:9px 13px;border-radius:10px;color:var(--mut);font-size:13.5px}
+.navlinks a:hover{color:var(--text);background:#ffffff0a}
+.lockbtn{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:#ffffff08;color:var(--text);cursor:pointer;font-size:13px}
+.lockbtn:hover{border-color:#22c55e66}
+
+.hero{padding:76px 0 42px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
+  border:1px solid #22c55e33;background:#22c55e12;color:#86efac;font-size:12px;font-weight:700;letter-spacing:.06em}
+.hero h2{font-size:clamp(34px,5vw,58px);line-height:1.03;margin:16px 0 16px;letter-spacing:-1.2px}
+.hero h2 span{background:linear-gradient(100deg,#86efac,#22c55e 45%,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);font-size:15.5px;line-height:1.7;max-width:560px;margin:0 0 26px}
+.cta{display:flex;gap:11px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:12px;font-weight:800;font-size:14px;
+  background:linear-gradient(145deg,var(--acc2),#16a34a);color:#04140a;box-shadow:0 12px 30px #22c55e30}
+.btn.ghost{background:#ffffff08;border:1px solid var(--line);color:var(--text);box-shadow:none;font-weight:600}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.mock{position:relative;border-radius:22px;border:1px solid var(--line);padding:14px;
+  background:linear-gradient(160deg,#ffffff0b,#ffffff02);box-shadow:0 30px 80px #0008}
+.mock .top{display:flex;gap:6px;padding:2px 2px 10px}
+.mock .top i{width:9px;height:9px;border-radius:50%;background:#ffffff22;display:block}
+.mock .win{border-radius:14px;background:#080d17;border:1px solid #ffffff0d;overflow:hidden}
+.mock .side{display:flex;gap:0}
+.mock .rail{width:92px;padding:12px 8px;background:#0a101c;border-right:1px solid #ffffff0a}
+.mock .rail b{display:block;font-size:9px;color:#5b6b82;letter-spacing:.18em;margin:0 0 8px 6px}
+.mock .rail u{display:block;height:22px;border-radius:7px;margin-bottom:5px;background:#ffffff08;text-decoration:none}
+.mock .rail u.on{background:linear-gradient(90deg,#22c55e33,#22c55e0a);border-left:2px solid var(--acc)}
+.mock .body{flex:1;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
+.mock .m{height:34px;border-radius:9px;background:#ffffff08;border:1px solid #ffffff08;position:relative;overflow:hidden}
+.mock .m.on{background:linear-gradient(120deg,#22c55e2e,#22c55e08);border-color:#22c55e33}
+.mock .m:after{content:"";position:absolute;left:8px;top:11px;width:44%;height:5px;border-radius:4px;background:#ffffff24}
+.mock .m.on:after{background:#86efac66}
+.mock .sp{grid-column:1/-1;display:flex;gap:9px;align-items:center;padding:9px;border-radius:10px;
+  background:linear-gradient(120deg,#22c55e1c,#ffffff04);border:1px solid #22c55e22}
+.mock .art{width:34px;height:34px;border-radius:8px;background:linear-gradient(145deg,#22c55e,#0ea5e9);flex:none}
+.mock .sp b{font-size:10px;color:#86efac;display:block;letter-spacing:.12em}
+.mock .sp s{display:block;width:90px;height:5px;border-radius:3px;background:#ffffff26;text-decoration:none;margin-top:5px}
+.mock .sp em{display:block;width:120px;height:5px;border-radius:3px;background:#ffffff14;text-decoration:none;margin-top:5px}
+.mock .beam{position:absolute;right:26px;bottom:34px;width:2px;height:86px;background:linear-gradient(#22c55e,#22c55e00);border-radius:2px}
+.mock .tag{position:absolute;right:10px;bottom:110px;font-size:9px;color:#86efac;background:#0b1220;border:1px solid #22c55e44;
+  border-radius:6px;padding:3px 6px}
+
+section.band{padding:56px 0}
+.sechead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:26px}
+.sechead h3{font-size:clamp(24px,3.4vw,34px);margin:0;letter-spacing:-.6px}
+.sechead p{margin:6px 0 0;color:var(--mut);font-size:14px;max-width:620px;line-height:1.65}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feat{padding:22px 20px;border-radius:var(--r);border:1px solid var(--line);
+  background:linear-gradient(165deg,#ffffff09,#ffffff02);transition:.18s}
+.feat:hover{transform:translateY(-3px);border-color:#22c55e3a;background:linear-gradient(165deg,#22c55e12,#ffffff03)}
+.feat .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;
+  background:#22c55e14;border:1px solid #22c55e2e;margin-bottom:14px}
+.feat b{display:block;font-size:15px;margin-bottom:7px}
+.feat span{color:var(--mut);font-size:13px;line-height:1.65;display:block}
+
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.stat{padding:18px;border-radius:14px;border:1px solid var(--line);background:#ffffff05;text-align:center}
+.stat b{display:block;font-size:22px;color:#86efac;letter-spacing:-.4px}
+.stat span{font-size:11.5px;color:var(--mut);letter-spacing:.05em}
+
+.dl{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+.dlcard{padding:28px;border-radius:22px;border:1px solid #22c55e33;
+  background:linear-gradient(150deg,#22c55e16,#ffffff03);box-shadow:0 24px 70px #0007}
+.dlcard h4{margin:0 0 8px;font-size:22px}
+.dlcard p{margin:0 0 18px;color:var(--mut);font-size:13.5px;line-height:1.7}
+.meta{display:grid;gap:9px;margin:18px 0 22px}
+.meta div{display:flex;justify-content:space-between;gap:16px;font-size:12.5px;color:var(--mut);
+  padding-bottom:8px;border-bottom:1px dashed #ffffff12}
+.meta div b{color:var(--text);font-weight:600}
+.steps{padding:24px;border-radius:22px;border:1px solid var(--line);background:#ffffff04}
+.steps h4{margin:0 0 14px;font-size:15px}
+.steps ol{margin:0;padding-left:18px;color:var(--mut);font-size:13px;line-height:1.9}
+.steps ol b{color:var(--text)}
+
+details{border:1px solid var(--line);border-radius:13px;background:#ffffff04;padding:0 16px;margin-bottom:9px}
+details summary{cursor:pointer;padding:15px 0;font-weight:600;font-size:13.5px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"+";float:right;color:var(--acc);font-weight:800}
+details[open] summary:after{content:"–"}
+details p{margin:0 0 15px;color:var(--mut);font-size:13px;line-height:1.7}
+
+footer{padding:34px 0 46px;color:#6b7a8f;font-size:12px;border-top:1px solid var(--line);margin-top:26px}
+footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+footer b{color:#9fb0c4;font-weight:600}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:48px}
+  .grid{grid-template-columns:1fr 1fr}
+  .strip{grid-template-columns:1fr 1fr}
+  .dl{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .hero h2{letter-spacing:-.6px}
+  .mock{order:-1}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= password gate ================= -->
+<div id="gate">
+  <div class="gcard" id="gcard">
+    <div class="zlogo">Z</div>
+    <h1>Zelvak Client</h1>
+    <p>Soukromý přístup. Zadej heslo pro vstup na stránku.</p>
+    <form class="pin" id="gform" autocomplete="off">
+      <input id="gpw" type="password" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="••••" aria-label="Heslo">
+      <button type="submit">Vstoupit</button>
+    </form>
+    <div class="gerr" id="gerr"></div>
+    <div class="gfoot">Přístup jen pro pozvané</div>
+  </div>
+</div>
+
+<!-- ================= site ================= -->
+<div id="site" hidden>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="b">Z</span> Zelvak Client</a>
+    <nav class="navlinks">
+      <a href="#features">Funkce</a>
+      <a href="#look">Vzhled</a>
+      <a href="#news">Novinky</a>
+      <a href="#download">Download</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="lockbtn" id="lock">Zamknout</button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="kicker">FABRIC 1.21.11 &nbsp;•&nbsp; LEGIT FIRST</span>
+        <h2>Minecraft, ale <span>podle tvého</span>.</h2>
+        <p>Zelvak Client je odlehčený launcher a klientský mod pro Fabric. Přináší čisté menu, FreeLook s plynulou animací, Lunar-style waypointy, Music menu (Spotify, YouTube a Apple Music), friends se ZelvakTagem a spoustu dalšího — bez zbytečného balastu.</p>
+        <div class="cta">
+          <a class="btn" href="#download">Stáhnout launcher</a>
+          <a class="btn ghost" href="#features">Prohlédnout funkce</a>
+        </div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="top"><i></i><i></i><i></i></div>
+        <div class="win">
+          <div class="side">
+            <div class="rail"><b>MENU</b><u class="on"></u><u></u><u></u><u></u><u></u><u></u></div>
+            <div class="body">
+              <div class="m on"></div><div class="m"></div><div class="m"></div><div class="m on"></div>
+              <div class="m"></div><div class="m"></div>
+              <div class="sp"><span class="art"></span><span><b>MUSIC</b><s></s><em></em></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="beam"></div>
+        <div class="tag">Waypoint 42m</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="band" id="features">
+    <div class="wrap">
+      <div class="sechead">
+        <div>
+          <h3>Všechno, co potřebuješ</h3>
+          <p>Postavené pro každodenní hraní: rychlé, přehledné a bez věcí, které by tě zbytečně brzdily.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="feat"><div class="ic">◈</div><b>Legit Mode</b><span>Všechny riskantní moduly jsou zamčené. Čistý klient, se kterým můžeš hrát kdekoli.</span></div>
+        <div class="feat"><div class="ic">◉</div><b>FreeLook s animací</b><span>Podrž R a rozhlížej se. Kamera plynule vyjede do třetí osoby a stejně hladce se vrátí zpět.</span></div>
+        <div class="feat"><div class="ic">⚑</div><b>Waypointy</b><span>Libovolně mnoho bodů s názvem, barvou, beamem a vzdáleností. Přesně jako na Lunaru.</span></div>
+        <div class="feat"><div class="ic">♪</div><b>Music ve hře</b><span>Spotify, YouTube Music a Apple Music v jednom menu (F7). Spotify se přihlásí v prohlížeči nebo kódem a ovládáš ho přímo ve hře — playlisty, skladby, hlasitost. Menu samo žádné reklamy neobsahuje.</span></div>
+        <div class="feat"><div class="ic">♥</div><b>Friends + ZelvakTag</b><span>Seznam přátel v launcheru. Jména z něj dostanou stejnou značku jako ty — a funguje napříč profily.</span></div>
+        <div class="feat"><div class="ic">◍</div><b>Host to LAN</b><span>Otevři singleplayer svět kamarádům. Mod vypíše adresu, kterou stačí zadat v Direct Connect.</span></div>
+        <div class="feat"><div class="ic">▤</div><b>Packs per profile</b><span>Resource packy a datapacky pro každý profil zvlášť, s kontrolou verze podle pack.mcmeta.</span></div>
+        <div class="feat"><div class="ic">⌁</div><b>Společné nastavení</b><span>Téma, HUD, keybindy i moduly se sdílí mezi všemi profily a verzemi. Přepneš verzi, vše zůstane.</span></div>
+        <div class="feat"><div class="ic">✧</div><b>Vzhled, který žije</b><span>Zaoblené GUI, vlastní accent, GIF pozadí a barvy sladěné s rytmem animace.</span></div>
+      </div>
+      <div class="strip">
+        <div class="stat"><b>1.21.11</b><span>FABRIC</span></div>
+        <div class="stat"><b>100+</b><span>MODULŮ A HUD PRVKŮ</span></div>
+        <div class="stat"><b>F7</b><span>MUSIC MENU VE HŘE</span></div>
+        <div class="stat"><b>1</b><span>SPOLEČNÉ NASTAVENÍ</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="look">
+    <div class="wrap">
+      <div class="sechead">
+        <div>
+          <h3>Vzhled, který drží pohromadě</h3>
+          <p>Launcher i hra používají stejnou paletu, stejné zaoblení a stejný accent. Když si změníš téma, změní se všude.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="feat"><div class="ic">◐</div><b>GIF pozadí</b><span>Animované pozadí launcheru. Accent a glow se synchronizují s rytmem GIFu, takže nic nebliká mimo tempo.</span></div>
+        <div class="feat"><div class="ic">▢</div><b>Zaoblené GUI</b><span>Každý panel, karta, tlačítko i posuvník má zaoblené rohy. Žádné ostré hrany.</span></div>
+        <div class="feat"><div class="ic">☰</div><b>Vlastní menu</b><span>Přehledné kategorie, hledání, profily, keybindy a drag &amp; drop editor HUD.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="news">
+    <div class="wrap">
+      <div class="sechead">
+        <div>
+          <h3>Co je nového</h3>
+          <p>Poslední velká aktualizace: přepínání účtů přímo ve hře, Music menu, jednoduchá makra, friends ve hře a spousta nových modulů. Verze 1.3.0 přidává AutoLeave (odpojí tě, když se k tobě někdo portne) a AntiVanish (napíše do chatu, když se někdo teleportuje, je neviditelný nebo je ve vanishi). Všechny moduly si teď berou itemy z inventáře do ruky a AutoTool je opravený. Auto AH Sell z 1.2.9 prodává označené itemy přes /ah sell s lidským časováním.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="feat"><div class="ic">!</div><b>v1.3.0 – AutoLeave, AntiVanish a itemy z inventáře</b><span>AutoLeave tě odpojí příkazem (výchozí /hub), když se k tobě někdo teleportuje. AntiVanish napíše do chatu, když se někdo objeví u tebe, je neviditelný nebo je v tabu bez postavy (vanish). Každý modul, který potřebuje item z inventáře (potky, gapple, jídlo, perly, krystaly, bloky, vodu, kotvu, rybářský prut), si ho teď sám přetáhne do ruky. AutoTool vybírá jen opravdové nástroje pro daný blok a bere je i z inventáře.</span></div>
+        <div class="feat"><div class="ic">$</div><b>v1.2.9 – Auto AH Sell s lidským časováním</b><span>Nový modul pro DonutSMP: nastavíš item, cenu a delay. Modul otevře inventář (je to vidět), vezme ender chestky, rozdělí je po jednom do hotbaru, pošle /ah sell s cenou a klikne potvrzení. Aby to nepůsobilo jako bot, každá pauza je náhodná, občas se na chvíli zastaví a sloty prodává v jiném pořadí. Stejné lidské chování mají i KillAura, AutoClicker, AimAssist a WTap. Modul je zabalený přímo v launcheru – na PC se sám aktualizuje ve všech profilech a na telefonu je součástí APK.</span></div>
+        <div class="feat"><div class="ic">▶</div><b>v1.2.5 – YouTube a overlay</b><span>YouTube záložka v Music menu umí hledat a přehrát video přímo ve hře na telefonu – bez otevírání stránky. Nový Overlay editor nastaví kameru v rohu obrazovky (velikost, průhlednost, přední/zadní). Diagnostika navíc ukládá logcat, takže při pádu uvidíš skutečný důvod.</span></div>
+        <div class="feat"><div class="ic">✔</div><b>v1.2.4 – start na telefonu</b><span>Nový renderer LTW zvládne OpenGL 3.2, které moderní Minecraft potřebuje. Když hra spadne, uvidíš dialog s důvodem a tlačítkem <b>Kopírovat log</b> místo tichého zavření. Opravený je i bezpečný režim bez modů.</span></div>
+        <div class="feat"><div class="ic">✔</div><b>v1.2.3 – stabilita</b><span>Opravené náhodné zavírání Android appky na Androidu 14+ (runtime se po rozbalení zamkne jen pro čtení). KillAura a Clutch už nezpůsobují sekání – cíle se hledají chytřeji a bez zbytečných packetů. OreESP má výběr všech rud a Spotify přihlášení už tě nepřepne do jiného okna samo.</span></div>
+        <div class="feat"><div class="ic">▤</div><b>Zelvak Mobile (Android)</b><span>Vlastní Android launcher – žádný PojavLauncher. Microsoft účet, všech 118 modulů, vlastní tlačítka, Spotify menu ve hře a příprava Minecraftu + Fabric + modu přímo v telefonu. Stáhni APK v sekci Download.</span></div>
+        <div class="feat"><div class="ic">⇄</div><b>Přepínání účtů ve hře</b><span>Otevři hack client (pravý Shift) → Účty, vyber jiný účet a potvrď. Hra se sama restartuje s vybraným účtem. Na telefonu stejně přes MENU → Účty.</span></div>
+        <div class="feat"><div class="ic">▦</div><b>Lunar-style ClickGUI</b><span>Boční navigace, karty modulů, přepínače a panel nastavení. Filtry All / HUD / Legit / Risky a rychlé hledání.</span></div>
+        <div class="feat"><div class="ic">⌘</div><b>Jednoduchá makra</b><span>Každé makro má jen tři věci: příkaz, klávesu a prodlevu. Žádné nahrávání ani složité kroky. Ukládá se do config/zelvak-macros.json.</span></div>
+        <div class="feat"><div class="ic">♥</div><b>Friends ve hře</b><span>Stejný seznam jako v launcheru. ESP, vzdálenost a upozornění na připojení přes zelvak-friends.json.</span></div>
+        <div class="feat"><div class="ic">✈</div><b>FreeCam</b><span>Odpoj kameru od těla a rozhlédni se nebo odleť. Tělo zůstane stát na místě a server nic nepozná.</span></div>
+        <div class="feat"><div class="ic">⚔</div><b>WTap + Backtrack</b><span>Combat vyladěný pro 1.21: W-tap po každém zásahu a tichý backtrack aim. Oba mají vlastní nastavení.</span></div>
+        <div class="feat"><div class="ic">⌁</div><b>Trajectories + MLG</b><span>Dráhy projektilů a automatický water clutch při pádu. Utility, které se hodí v každé hře.</span></div>
+        <div class="feat"><div class="ic">☀</div><b>CustomSky + Time</b><span>Vlastní obloha a LegitTimeChanger, který mění čas jen na tvém klientu. Server zůstává nedotčený.</span></div>
+        <div class="feat"><div class="ic">◐</div><b>Cinematic pozadí</b><span>Aurora, Sunset, Night, Nether, End a Mono. Plynulé animace i na slabším PC, přepínání v záložce Theme.</span></div>
+        <div class="feat"><div class="ic">◈</div><b>Legit / Risky režim</b><span>Rizikové moduly jsou označené a v Legit Mode okamžitě zamčené. Jedním klikem přepneš režim.</span></div>
+        <div class="feat"><div class="ic">◍</div><b>Uklizený klient</b><span>Odstraněné moduly, které neměly co dělat v legit klientovi: Flight, Speed, Bhop, Velocity, Reach, ChestStealer a další.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="download">
+    <div class="wrap">
+      <div class="sechead">
+        <div>
+          <h3>Stáhni a hraj</h3>
+          <p>Jeden soubor, žádná instalace. Launcher si sám stáhne Minecraft, Fabric a potřebné knihovny.</p>
+        </div>
+      </div>
+      <p style="margin:0 0 18px;padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:10px;font-size:13px;line-height:1.5">
+        <b>Pozor:</b> GitHub účet je pozastavený, takže stahování nejde přes GitHub. Všechny soubory jsou teď na
+        <a href="https://gofile.io/d/FN6jwJ2y" target="_blank" rel="noopener">Gofile</a> a odkazy níže fungují.
+        Kontrolní SHA-256 najdeš v <b>SHA256.txt</b> uvnitř ZIPu.
+      </p>
+      <div class="dl">
+        <div class="dlcard">
+          <h4>Zelvak Client</h4>
+          <p>Portable launcher pro Windows. Mod se do profilu nainstaluje automaticky při spuštění.</p>
+          <div class="meta">
+            <div><span>Platforma</span><b>Windows 10 / 11</b></div>
+            <div><span>Minecraft</span><b>1.21.11 · Fabric</b></div>
+            <div><span>Forma</span><b>Portable .exe</b></div>
+          </div>
+          <a class="btn" href="https://files.catbox.moe/nme2nj.zip" download>Stáhnout ZelvakClient (ZIP)</a>
+          <p style="margin-top:10px;font-size:12px;opacity:.7">V ZIPu je <b>ZelvakClient.exe</b>, <b>ZelvakMobile.apk</b> i <b>zelvak-client.jar</b>.</p>
+        </div>
+        <div class="steps">
+          <h4>Jak začít</h4>
+          <ol>
+            <li>Stáhni <b>ZelvakClient.exe</b>.</li>
+            <li>Spusť ho a nech ho stáhnout potřebné soubory.</li>
+            <li>Vyber profil a klikni na <b>LAUNCH</b>.</li>
+            <li>Ve hře otevři menu pravým <b>Shiftem</b>.</li>
+            <li>Účet změníš ve hře: <b>Shift → Účty → Přepnout → Potvrdit</b>. Hra se restartuje s novým účtem.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="dl" style="margin-top:18px">
+        <div class="dlcard">
+          <h4>Zelvak Mobile</h4>
+          <p>Vlastní Android launcher – žádný PojavLauncher. Přihlášení Microsoftem, všech 118 modulů, vlastní rychlá tlačítka, Music menu ve hře (Spotify, YouTube, Apple Music) a příprava Minecraftu, Fabricu a Zelvak modu přímo v telefonu.</p>
+          <div class="meta">
+            <div><span>Platforma</span><b>Android 5+</b></div>
+            <div><span>Moduly</span><b>118</b></div>
+            <div><span>Forma</span><b>.apk</b></div>
+          </div>
+          <a class="btn" href="https://files.catbox.moe/xq8kwy.apk" download>Stáhnout ZelvakMobile.apk</a>
+        </div>
+        <div class="steps">
+          <h4>Jak hrát na telefonu</h4>
+          <ol>
+            <li>Nainstaluj <b>ZelvakMobile.apk</b>.</li>
+            <li>V appce se přihlas <b>Microsoftem</b> (nebo použij offline jméno).</li>
+            <li>Klikni na <b>PŘIPRAVIT HRU</b> – appka stáhne <b>Minecraft 1.21.11</b>, <b>Fabric</b> a <b>Zelvak mod</b>.</li>
+            <li>V sekci <b>Moduly</b> zapni, co chceš – <b>zelvak.json</b> se uloží přímo do instance.</li>
+            <li>Ve hře otevři <b>Music</b> tlačítkem <b>SPOT</b> (nebo <b>MENU</b> pro Zelvak menu).</li>
+            <li>Účet přepneš ve hře přes <b>MENU → Účty</b> – hra se sama restartuje s vybraným účtem.</li>
+            <li>Když hra spadne hned po startu, appka ti při dalším otevření sama ukáže <b>Poslední hra spadla</b> s logem – zkopíruj ho a pošli mi ho. Nebo zapni <b>Spustit bez modů</b> / otevři <b>Nastavení → Diagnostika</b>.</li>
+            <li>Hotovo – instance je připravená v telefonu.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="dl" style="margin-top:18px">
+        <div class="dlcard">
+          <h4>Zelvak mod (jen .jar)</h4>
+          <p>Samostatný Fabric mod bez launcheru. Hodí se do MultiMC, Prismu, oficiálního Fabric profilu nebo jako záloha pro Android launcher.</p>
+          <div class="meta">
+            <div><span>Minecraft</span><b>1.21.11</b></div>
+            <div><span>Loader</span><b>Fabric 0.18.1+</b></div>
+            <div><span>Forma</span><b>.jar</b></div>
+          </div>
+          <a class="btn" href="https://gofile.io/d/FN6jwJ2y" target="_blank" rel="noopener">Stáhnout zelvak-client.jar</a>
+          <p style="margin-top:10px;font-size:12px;opacity:.7">Otevře se složka na Gofile – vyber <b>zelvak-client.jar</b>.</p>
+        </div>
+        <div class="steps">
+          <h4>Instalace modu</h4>
+          <ol>
+            <li>Nainstaluj <b>Fabric Loader</b> pro <b>1.21.11</b> a <b>Fabric API</b>.</li>
+            <li>Vlož <b>zelvak-client.jar</b> do složky <b>mods</b>.</li>
+            <li>Spusť hru – menu se otevře pravým <b>Shiftem</b>.</li>
+            <li>Reklamy a novinky najdeš přímo na titulní obrazovce.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="faq">
+    <div class="wrap">
+      <div class="sechead"><div><h3>Časté otázky</h3></div></div>
+      <details><summary>Potřebuju placený Minecraft?</summary><p>Ne. Launcher podporuje offline (cracked) režim. Pro online servery použij účet, který vlastníš.</p></details>
+      <details><summary>Funguje klient na serverech?</summary><p>Legit část ano. Riskantní moduly jsou v Legit Mode zamčené a nedají se zapnout, dokud sám nepřepneš režim.</p></details>
+      <details><summary>Odkud bere Spotify skladbu?</summary><p>Overlay čte Windows media session, takže funguje i bez přihlášení. Když se ve hře přihlásíš (F7 → Music → Spotify), načte se přímo Spotify Web API — playlisty, skladby a ovládání přehrávání. Přihlášení jde dokončit i vložením kódu z prohlížeče.</p></details>
+      <details><summary>Přihlášení Spotify mě přepne do jiného okna. Jde to bez toho?</summary><p>Ano. Menu už prohlížeč neotevírá samo – jen připraví odkaz. Klikneš na <b>Otevřít prohlížeč</b> (nebo odkaz otevřeš na telefonu a vložíš kód tlačítkem <b>Vložit</b>). Po potvrzení se hra sama vrátí dopředu. Přihlášení stačí udělat jednou, token se pamatuje.</p></details>
+      <details><summary>Proč se mi appka na telefonu zavírala?</summary><p>Ve verzi 1.2.5 je nový renderer LTW, který umí OpenGL 3.2 potřebné pro moderní Minecraft, a opravený pád při ukončení hry. Diagnostika navíc ukládá logcat. Kdyby hra přesto spadla, ukáže se dialog s důvodem a tlačítkem <b>Sdílet</b> – pošli mi log a opravím skutečnou příčinu. Pomůže i <b>Spustit bez modů</b> nebo <b>Nastavení → Diagnostika</b>.</p></details>
+      <details><summary>Jsou v Music menu reklamy?</summary><p>Ne. Menu samo žádné reklamy neobsahuje. Reklamy v přehrávání Spotify, YouTube Music a Apple Music řeší až Premium nebo předplatné dané služby.</p></details>
+      <details><summary>Proč se YouTube a Apple Music neovládají ve hře?</summary><p>YouTube už ano: v Music menu napiš název, klikni na výsledek a na telefonu se video přehraje přímo ve hře (bez otevírání stránky). Na PC se otevře prohlížeč. Apple Music oficiální API pro přehrávání ve hře nemá, proto se otevírá v prohlížeči.</p></details>
+      <details><summary>Jak funguje Auto AH Sell?</summary><p>Zapni modul v ClickGUI (Misc → AutoAHSell) a nastav <b>Item</b> (výchozí ender_chest), <b>Price</b> a <b>Delay</b>. Modul otevře inventář (je to vidět), vezme item, rozdělí stack po jednom do hotbaru a pro každý kus pošle <b>/ah sell cena</b>. Když server otevře potvrzovací okno, chvíli počká a klikne Confirm. Časování je záměrně lidské: pauzy kolem Delay (výchozí 700 ms, minimum 250 ms) se náhodně mění, občas přijde delší pauza a sloty se prodávají v jiném pořadí – proto to na DonutSMP nepadá jako bot.</p></details>
+      <details><summary>Jde dostat Discord kameru nebo sdílení obrazovky do hry?</summary><p>Discord nemá veřejné API, které by vložilo jeho kameru nebo sdílení obrazovky do jiné hry. V Overlay editoru proto zapneš vlastní kamerový náhled v rohu obrazovky (velikost, průhlednost, přední/zadní kamera). Discord nech běžet vedle hry – náhled ti kameru ukáže přímo ve hře.</p></details>
+      <details><summary>Jak přepnu účet ve spuštěné hře?</summary><p>Otevři hack client pravým <b>Shiftem</b>, klikni na <b>Účty</b>, vyber jiný účet a potvrď <b>Přepnout</b>. Launcher hru automaticky zavře a spustí znovu s vybraným účtem (session se za běhu bezpečně vyměnit nedá). Na telefonu otevři <b>MENU → Účty</b>. Přepnutí funguje, když je hra spuštěná z launcheru Zelvak.</p></details>
+      <details><summary>Změní se nastavení při přepnutí verze?</summary><p>Ne. Téma, HUD, keybindy a moduly jsou společné pro všechny profily. Resource packy zůstávají per profil.</p></details>
+      <details><summary>Jak funguje ZelvakTag?</summary><p>Jména z tvého friends seznamu dostanou v nametagu stejnou značku jako ty. Vidíš ji jen ty — je to klientská úprava.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <div><b>Zelvak Client</b> · postaveno pro Fabric</div>
+    <div>2026 · soukromá stránka</div>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  // SHA-256 of the access phrase. The plain password is not stored anywhere in this file.
+  var KEY = "6d4fcf1697c7648eecd58533e3201cc8b20dfd3672fbc4d64b3545e7d6c764c3";
+  var gate = document.getElementById("gate");
+  var site = document.getElementById("site");
+  var form = document.getElementById("gform");
+  var input = document.getElementById("gpw");
+  var err = document.getElementById("gerr");
+  var card = document.getElementById("gcard");
+  var tries = 0, until = 0;
+
+  function hex(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){
+      return b.toString(16).padStart(2, "0");
+    }).join("");
+  }
+  function hash(text){
+    if (!(window.crypto && window.crypto.subtle)) return Promise.reject(new Error("no-crypto"));
+    return window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)).then(hex);
+  }
+  function open(){
+    try { sessionStorage.setItem("zv-unlocked", "1"); } catch(e){}
+    gate.style.display = "none";
+    site.hidden = false;
+    window.scrollTo(0, 0);
+  }
+  function fail(msg){
+    err.textContent = msg;
+    card.classList.remove("shake");
+    void card.offsetWidth;
+    card.classList.add("shake");
+    input.value = "";
+    input.focus();
+  }
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var now = Date.now();
+    if (now < until) {
+      fail("Zkus to znovu za " + Math.ceil((until - now) / 1000) + " s.");
+      return;
+    }
+    var pw = input.value.trim();
+    if (!pw) { fail("Zadej heslo."); return; }
+    err.textContent = "";
+    hash("zelvak:" + pw).then(function(h){
+      if (h === KEY) {
+        tries = 0;
+        open();
+      } else {
+        tries++;
+        if (tries >= 5) {
+          until = Date.now() + 20000;
+          tries = 0;
+          fail("Příliš mnoho pokusů. Počkej 20 sekund.");
+        } else {
+          fail("Špatné heslo. Zbývá pokusů: " + (5 - tries) + ".");
+        }
+      }
+    }).catch(function(){
+      fail("Prohlížeč nepovolil ověření. Otevři stránku přes http://localhost.");
+    });
+  });
+  document.getElementById("lock").addEventListener("click", function(){
+    try { sessionStorage.removeItem("zv-unlocked"); } catch(e){}
+    site.hidden = true;
+    gate.style.display = "grid";
+    input.value = "";
+    err.textContent = "";
+    input.focus();
+  });
+  try {
+    if (sessionStorage.getItem("zv-unlocked") === "1") open();
+  } catch(e){}
+  input.focus();
+})();
+</script>
+</body>
+</html>

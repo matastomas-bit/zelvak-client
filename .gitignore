@@ -1,0 +1,6 @@
+*.exe
+*.apk
+*.jar
+*.zip
+dist/
+node_modules/

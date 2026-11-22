@@ -7,16 +7,16 @@
 <title>Zelvak Client</title>
 <style>
 :root{
-  --acc:#22c55e; --acc2:#4ade80; --bg:#070b12; --bg2:#0b111f; --card:#111827; --line:#ffffff14;
+  --acc:#7dd3fc; --acc2:#e0f2fe; --bg:#070b12; --bg2:#0b111f; --card:#111827; --line:#ffffff14;
   --text:#f4f7fb; --mut:#9aa7b8; --r:18px;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
   background:
-    radial-gradient(1100px 620px at 12% -12%, #22c55e22, transparent 60%),
+    radial-gradient(1100px 620px at 12% -12%, #7dd3fc22, transparent 60%),
     radial-gradient(900px 520px at 92% 4%, #3b82f61a, transparent 62%),
-    radial-gradient(700px 500px at 50% 110%, #a855f71a, transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, #818cf81a, transparent 60%),
     var(--bg);
   color:var(--text); font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
   min-height:100vh; overflow-x:hidden;
@@ -27,21 +27,21 @@ button{font:inherit}
 
 /* ---------- password gate ---------- */
 #gate{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:22px;
-  background:radial-gradient(900px 600px at 50% 20%,#22c55e18,transparent 60%),#05080e}
+  background:radial-gradient(900px 600px at 50% 20%,#7dd3fc18,transparent 60%),#05080e}
 .gcard{width:min(430px,100%);padding:34px 30px 28px;border-radius:24px;border:1px solid var(--line);
   background:linear-gradient(160deg,#ffffff0d,#ffffff03);backdrop-filter:blur(14px);
   box-shadow:0 30px 90px #0009, inset 0 1px 0 #ffffff12;text-align:center}
 .zlogo{width:66px;height:66px;border-radius:19px;display:grid;place-items:center;margin:0 auto 16px;
-  background:linear-gradient(145deg,var(--acc2),#059669);color:#04140a;font-weight:900;font-size:34px;
-  box-shadow:0 14px 34px #22c55e44, inset 0 1px 0 #ffffff66}
+  background:linear-gradient(145deg,var(--acc2),#0284c7);color:#082f49;font-weight:900;font-size:34px;
+  box-shadow:0 14px 34px #7dd3fc44, inset 0 1px 0 #ffffff66}
 .gcard h1{font-size:22px;margin:0 0 6px;letter-spacing:.3px}
 .gcard p{margin:0 0 20px;color:var(--mut);font-size:13.5px;line-height:1.55}
 .pin{display:flex;gap:9px}
 .pin input{flex:1;min-width:0;padding:13px 15px;border-radius:12px;border:1px solid #ffffff20;
   background:#00000042;color:var(--text);font-size:17px;letter-spacing:.35em;outline:none;text-align:center}
-.pin input:focus{border-color:#22c55e88;box-shadow:0 0 0 3px #22c55e22}
-.pin button{padding:0 20px;border-radius:12px;border:0;background:linear-gradient(145deg,var(--acc2),#16a34a);
-  color:#04140a;font-weight:800;cursor:pointer;box-shadow:0 8px 22px #22c55e33}
+.pin input:focus{border-color:#7dd3fc88;box-shadow:0 0 0 3px #7dd3fc22}
+.pin button{padding:0 20px;border-radius:12px;border:0;background:linear-gradient(145deg,var(--acc2),#38bdf8);
+  color:#082f49;font-weight:800;cursor:pointer;box-shadow:0 8px 22px #7dd3fc33}
 .pin button:hover{filter:brightness(1.07)}
 .gerr{min-height:20px;margin-top:12px;font-size:12.5px;color:#fca5a5}
 .gfoot{margin-top:16px;font-size:11px;color:#66758a}
@@ -55,22 +55,22 @@ header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
 .nav{display:flex;align-items:center;gap:14px;height:68px}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.4px}
 .brand .b{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
-  background:linear-gradient(145deg,var(--acc2),#059669);color:#04140a;font-weight:900}
+  background:linear-gradient(145deg,var(--acc2),#0284c7);color:#082f49;font-weight:900}
 .navlinks{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
 .navlinks a{padding:9px 13px;border-radius:10px;color:var(--mut);font-size:13.5px}
 .navlinks a:hover{color:var(--text);background:#ffffff0a}
 .lockbtn{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:#ffffff08;color:var(--text);cursor:pointer;font-size:13px}
-.lockbtn:hover{border-color:#22c55e66}
+.lockbtn:hover{border-color:#7dd3fc66}
 
 .hero{padding:76px 0 42px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
 .kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
-  border:1px solid #22c55e33;background:#22c55e12;color:#86efac;font-size:12px;font-weight:700;letter-spacing:.06em}
+  border:1px solid #7dd3fc33;background:#7dd3fc12;color:#bae6fd;font-size:12px;font-weight:700;letter-spacing:.06em}
 .hero h2{font-size:clamp(34px,5vw,58px);line-height:1.03;margin:16px 0 16px;letter-spacing:-1.2px}
-.hero h2 span{background:linear-gradient(100deg,#86efac,#22c55e 45%,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h2 span{background:linear-gradient(100deg,#bae6fd,#7dd3fc 45%,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p{color:var(--mut);font-size:15.5px;line-height:1.7;max-width:560px;margin:0 0 26px}
 .cta{display:flex;gap:11px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:12px;font-weight:800;font-size:14px;
-  background:linear-gradient(145deg,var(--acc2),#16a34a);color:#04140a;box-shadow:0 12px 30px #22c55e30}
+  background:linear-gradient(145deg,var(--acc2),#38bdf8);color:#082f49;box-shadow:0 12px 30px #7dd3fc30}
 .btn.ghost{background:#ffffff08;border:1px solid var(--line);color:var(--text);box-shadow:none;font-weight:600}
 .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
 .mock{position:relative;border-radius:22px;border:1px solid var(--line);padding:14px;
@@ -82,20 +82,20 @@ header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
 .mock .rail{width:92px;padding:12px 8px;background:#0a101c;border-right:1px solid #ffffff0a}
 .mock .rail b{display:block;font-size:9px;color:#5b6b82;letter-spacing:.18em;margin:0 0 8px 6px}
 .mock .rail u{display:block;height:22px;border-radius:7px;margin-bottom:5px;background:#ffffff08;text-decoration:none}
-.mock .rail u.on{background:linear-gradient(90deg,#22c55e33,#22c55e0a);border-left:2px solid var(--acc)}
+.mock .rail u.on{background:linear-gradient(90deg,#7dd3fc33,#7dd3fc0a);border-left:2px solid var(--acc)}
 .mock .body{flex:1;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
 .mock .m{height:34px;border-radius:9px;background:#ffffff08;border:1px solid #ffffff08;position:relative;overflow:hidden}
-.mock .m.on{background:linear-gradient(120deg,#22c55e2e,#22c55e08);border-color:#22c55e33}
+.mock .m.on{background:linear-gradient(120deg,#7dd3fc2e,#7dd3fc08);border-color:#7dd3fc33}
 .mock .m:after{content:"";position:absolute;left:8px;top:11px;width:44%;height:5px;border-radius:4px;background:#ffffff24}
-.mock .m.on:after{background:#86efac66}
+.mock .m.on:after{background:#bae6fd66}
 .mock .sp{grid-column:1/-1;display:flex;gap:9px;align-items:center;padding:9px;border-radius:10px;
-  background:linear-gradient(120deg,#22c55e1c,#ffffff04);border:1px solid #22c55e22}
-.mock .art{width:34px;height:34px;border-radius:8px;background:linear-gradient(145deg,#22c55e,#0ea5e9);flex:none}
-.mock .sp b{font-size:10px;color:#86efac;display:block;letter-spacing:.12em}
+  background:linear-gradient(120deg,#7dd3fc1c,#ffffff04);border:1px solid #7dd3fc22}
+.mock .art{width:34px;height:34px;border-radius:8px;background:linear-gradient(145deg,#7dd3fc,#0ea5e9);flex:none}
+.mock .sp b{font-size:10px;color:#bae6fd;display:block;letter-spacing:.12em}
 .mock .sp s{display:block;width:90px;height:5px;border-radius:3px;background:#ffffff26;text-decoration:none;margin-top:5px}
 .mock .sp em{display:block;width:120px;height:5px;border-radius:3px;background:#ffffff14;text-decoration:none;margin-top:5px}
-.mock .beam{position:absolute;right:26px;bottom:34px;width:2px;height:86px;background:linear-gradient(#22c55e,#22c55e00);border-radius:2px}
-.mock .tag{position:absolute;right:10px;bottom:110px;font-size:9px;color:#86efac;background:#0b1220;border:1px solid #22c55e44;
+.mock .beam{position:absolute;right:26px;bottom:34px;width:2px;height:86px;background:linear-gradient(#7dd3fc,#7dd3fc00);border-radius:2px}
+.mock .tag{position:absolute;right:10px;bottom:110px;font-size:9px;color:#bae6fd;background:#0b1220;border:1px solid #7dd3fc44;
   border-radius:6px;padding:3px 6px}
 
 section.band{padding:56px 0}
@@ -105,20 +105,20 @@ section.band{padding:56px 0}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .feat{padding:22px 20px;border-radius:var(--r);border:1px solid var(--line);
   background:linear-gradient(165deg,#ffffff09,#ffffff02);transition:.18s}
-.feat:hover{transform:translateY(-3px);border-color:#22c55e3a;background:linear-gradient(165deg,#22c55e12,#ffffff03)}
+.feat:hover{transform:translateY(-3px);border-color:#7dd3fc3a;background:linear-gradient(165deg,#7dd3fc12,#ffffff03)}
 .feat .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;
-  background:#22c55e14;border:1px solid #22c55e2e;margin-bottom:14px}
+  background:#7dd3fc14;border:1px solid #7dd3fc2e;margin-bottom:14px}
 .feat b{display:block;font-size:15px;margin-bottom:7px}
 .feat span{color:var(--mut);font-size:13px;line-height:1.65;display:block}
 
 .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
 .stat{padding:18px;border-radius:14px;border:1px solid var(--line);background:#ffffff05;text-align:center}
-.stat b{display:block;font-size:22px;color:#86efac;letter-spacing:-.4px}
+.stat b{display:block;font-size:22px;color:#bae6fd;letter-spacing:-.4px}
 .stat span{font-size:11.5px;color:var(--mut);letter-spacing:.05em}
 
 .dl{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
-.dlcard{padding:28px;border-radius:22px;border:1px solid #22c55e33;
-  background:linear-gradient(150deg,#22c55e16,#ffffff03);box-shadow:0 24px 70px #0007}
+.dlcard{padding:28px;border-radius:22px;border:1px solid #7dd3fc33;
+  background:linear-gradient(150deg,#7dd3fc16,#ffffff03);box-shadow:0 24px 70px #0007}
 .dlcard h4{margin:0 0 8px;font-size:22px}
 .dlcard p{margin:0 0 18px;color:var(--mut);font-size:13.5px;line-height:1.7}
 .meta{display:grid;gap:9px;margin:18px 0 22px}
@@ -153,6 +153,39 @@ footer b{color:#9fb0c4;font-weight:600}
   .hero h2{letter-spacing:-.6px}
   .mock{order:-1}
 }
+
+/* ---------- ZIMNI UPDATE 1.3.3 ---------- */
+:root{--ice:#bae6fd;--frost:#e0f2fe;--deep:#082f49}
+body{background:
+  radial-gradient(1100px 620px at 12% -12%,#7dd3fc26,transparent 60%),
+  radial-gradient(900px 520px at 92% 4%,#bae6fd1f,transparent 62%),
+  radial-gradient(700px 500px at 50% 110%,#818cf81c,transparent 60%),
+  linear-gradient(#08111e,#0a1626 60%,#08111e)!important;}
+header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
+.kicker{border-color:#7dd3fc44!important;background:#7dd3fc18!important;color:#e0f2fe!important}
+.hero h2 span{background:linear-gradient(100deg,#e0f2fe,#7dd3fc 45%,#a5b4fc)!important;-webkit-background-clip:text!important;background-clip:text!important}
+.btn{background:linear-gradient(145deg,#e0f2fe,#7dd3fc)!important;color:#082f49!important;box-shadow:0 12px 30px #7dd3fc33!important}
+.btn.ghost{background:#ffffff08!important;border:1px solid #bae6fd33!important;color:var(--text)!important;box-shadow:none!important}
+.month{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}
+.month span{padding:7px 12px;border-radius:999px;border:1px solid #bae6fd33;background:#bae6fd0e;color:#dbeafe;font-size:12px;font-weight:600}
+#snow{position:fixed;inset:0;z-index:40;pointer-events:none;overflow:hidden}
+#snow i{position:absolute;top:-20px;color:#fff;opacity:.75;font-style:normal;animation:fall linear infinite;text-shadow:0 0 6px #bae6fd}
+@keyframes fall{to{transform:translate(60px,105vh) rotate(360deg);opacity:.25}}
+@media(prefers-reduced-motion:reduce){#snow{display:none}}
+.winclassic{width:min(560px,100%);margin:0 auto;background:#f0f0f0;color:#000;border:2px solid #fff;border-right-color:#404040;border-bottom-color:#404040;
+  box-shadow:2px 2px 0 #0008;font:12px Tahoma,"Segoe UI",Arial,sans-serif}
+.wtitle{display:flex;align-items:center;gap:8px;padding:4px 6px;background:linear-gradient(90deg,#0a246a,#3a6ea5);color:#fff;font-weight:700}
+.wtitle button{margin-left:auto;width:20px;height:18px;line-height:14px;padding:0;background:#f0f0f0;color:#000;border:1px solid #fff;border-right-color:#404040;border-bottom-color:#404040;font:700 11px Tahoma}
+.wbody{padding:14px 16px 12px}
+.wrow{display:flex;gap:12px;padding:5px 0;border-bottom:1px dotted #b9b9b9}
+.wrow span{width:86px;flex:none;color:#333}
+.wrow b{font-weight:600}
+.wbuttons{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.wbuttons button{min-width:78px;padding:5px 14px;background:#f0f0f0;color:#000;border:2px solid #fff;border-right-color:#404040;border-bottom-color:#404040;font:12px Tahoma,"Segoe UI"}
+.wbuttons button:active{border-color:#404040 #fff #fff #404040}
+.wfoot{margin-top:26px;padding:14px 18px;border:1px solid #bae6fd33;border-radius:10px;background:#0b1a2b;color:#9fb6cf;font:12px "Segoe UI",Tahoma,sans-serif;display:flex;gap:22px;flex-wrap:wrap}
+.wfoot b{color:#dbeafe;font-weight:600}
+
 </style>
 </head>
 <body>
@@ -195,6 +228,7 @@ footer b{color:#9fb0c4;font-weight:600}
         <span class="kicker">FABRIC 1.21.11 &nbsp;•&nbsp; LEGIT FIRST</span>
         <h2>Minecraft, ale <span>podle tvého</span>.</h2>
         <p>Zelvak Client je odlehčený launcher a klientský mod pro Fabric. Přináší čisté menu, FreeLook s plynulou animací, Lunar-style waypointy, Music menu (Spotify, YouTube a Apple Music), friends se ZelvakTagem a spoustu dalšího — bez zbytečného balastu.</p>
+        <div class="month"><span>❄ Sníh a led</span><span>☕ Teplý styl</span><span>⌘ Normální písmo</span><span>⚡ Rychle, čistě, bez zbytečností</span></div>
         <div class="cta">
           <a class="btn" href="#download">Stáhnout launcher</a>
           <a class="btn ghost" href="#features">Prohlédnout funkce</a>
@@ -271,6 +305,7 @@ footer b{color:#9fb0c4;font-weight:600}
         </div>
       </div>
       <div class="grid">
+        <div class="feat"><div class="ic">❄</div><b>v1.3.3 – Zimní update</b><span>Všechno je teď v zimním stylu: sníh, ledové barvy a jemný frost efekt. Texty v menu, launcheru i na webu už nejsou v pixelovém Minecraft písmu, ale v normálním písmu ve stylu Windows (Segoe UI / Tahoma). Přibyly klasické popisky a přehledné dialogy. Nic se nezměnilo na funkčnosti – všechny moduly a stahování fungují stejně.</span></div>
         <div class="feat"><div class="ic">!</div><b>v1.3.0 – AutoLeave, AntiVanish a itemy z inventáře</b><span>AutoLeave tě odpojí příkazem (výchozí /hub), když se k tobě někdo teleportuje. AntiVanish napíše do chatu, když se někdo objeví u tebe, je neviditelný nebo je v tabu bez postavy (vanish). Každý modul, který potřebuje item z inventáře (potky, gapple, jídlo, perly, krystaly, bloky, vodu, kotvu, rybářský prut), si ho teď sám přetáhne do ruky. AutoTool vybírá jen opravdové nástroje pro daný blok a bere je i z inventáře.</span></div>
         <div class="feat"><div class="ic">$</div><b>v1.2.9 – Auto AH Sell s lidským časováním</b><span>Nový modul pro DonutSMP: nastavíš item, cenu a delay. Modul otevře inventář (je to vidět), vezme ender chestky, rozdělí je po jednom do hotbaru, pošle /ah sell s cenou a klikne potvrzení. Aby to nepůsobilo jako bot, každá pauza je náhodná, občas se na chvíli zastaví a sloty prodává v jiném pořadí. Stejné lidské chování mají i KillAura, AutoClicker, AimAssist a WTap. Modul je zabalený přímo v launcheru – na PC se sám aktualizuje ve všech profilech a na telefonu je součástí APK.</span></div>
         <div class="feat"><div class="ic">▶</div><b>v1.2.5 – YouTube a overlay</b><span>YouTube záložka v Music menu umí hledat a přehrát video přímo ve hře na telefonu – bez otevírání stránky. Nový Overlay editor nastaví kameru v rohu obrazovky (velikost, průhlednost, přední/zadní). Diagnostika navíc ukládá logcat, takže při pádu uvidíš skutečný důvod.</span></div>
@@ -485,5 +520,42 @@ footer b{color:#9fb0c4;font-weight:600}
   input.focus();
 })();
 </script>
+
+  <section class="band" id="classic">
+    <div class="wrap">
+      <div class="winclassic">
+        <div class="wtitle"><span>▣</span> Vlastnosti – Zelvak Client <button type="button">✕</button></div>
+        <div class="wbody">
+          <div class="wrow"><span>Verze:</span><b>1.3.3 „Zimní update“</b></div>
+          <div class="wrow"><span>Písmo:</span><b>Windows / Segoe UI, Tahoma</b></div>
+          <div class="wrow"><span>Vzhled:</span><b>Zima – sníh, led, čisté linie</b></div>
+          <div class="wrow"><span>Stav:</span><b>Připraveno ke hraní</b></div>
+          <div class="wrow"><span>Poznámka:</span><b>Hraj svůj styl. Vše na jednom místě.</b></div>
+          <div class="wbuttons"><button type="button">OK</button><button type="button">Zrušit</button></div>
+        </div>
+      </div>
+      <div class="wfoot"><span><b>Připraveno</b></span><span>Zelvak Client 1.3.3</span><span>Zimní režim: zapnutý</span><span>Klávesa pro menu: pravý Shift</span></div>
+    </div>
+  </section>
+
+  <div id="snow" aria-hidden="true"></div>
+  <script>
+    (function(){
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var box = document.getElementById('snow');
+      var flakes = ['✱','❄','✧','•','❅'];
+      for (var i=0;i<46;i++){
+        var f=document.createElement('i');
+        f.textContent=flakes[i%flakes.length];
+        f.style.left=(Math.random()*100)+'vw';
+        f.style.fontSize=(8+Math.random()*13)+'px';
+        f.style.animationDuration=(9+Math.random()*13)+'s';
+        f.style.animationDelay=(-Math.random()*18)+'s';
+        f.style.opacity=String(0.35+Math.random()*0.5);
+        box.appendChild(f);
+      }
+    })();
+  </script>
+
 </body>
 </html>

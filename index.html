@@ -338,7 +338,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
         <div class="feat"><div class="ic">⇄</div><b>Přepínání účtů ve hře</b><span>Otevři hack client (pravý Shift) → Účty, vyber jiný účet a potvrď. Hra se sama restartuje s vybraným účtem. Na telefonu stejně přes MENU → Účty.</span></div>
         <div class="feat"><div class="ic">▦</div><b>Lunar-style ClickGUI</b><span>Boční navigace, karty modulů, přepínače a panel nastavení. Filtry All / HUD / Legit / Risky a rychlé hledání.</span></div>
         <div class="feat"><div class="ic">⌘</div><b>Jednoduchá makra</b><span>Každé makro má jen tři věci: příkaz, klávesu a prodlevu. Žádné nahrávání ani složité kroky. Ukládá se do config/zelvak-macros.json.</span></div>
-        <div class="feat"><div class="ic">♥</div><b>Friends ve hře</b><span>Stejný seznam jako v launcheru. ESP, vzdálenost a upozornění na připojení přes zelvak-friends.json.</span></div>
+        <div class="feat"><div class="ic">♥</div><b>Friends ve hře</b><span>Stejný seznam jako v launcheru. Nametagy, avatary a upozornění na připojení přes zelvak-friends.json – bez ESP boxů a značek zdí.</span></div>
         <div class="feat"><div class="ic">✈</div><b>FreeCam</b><span>Odpoj kameru od těla a rozhlédni se nebo odleť. Tělo zůstane stát na místě a server nic nepozná.</span></div>
         <div class="feat"><div class="ic">⚔</div><b>WTap + Backtrack</b><span>Combat vyladěný pro 1.21: W-tap po každém zásahu a tichý backtrack aim. Oba mají vlastní nastavení.</span></div>
         <div class="feat"><div class="ic">⌁</div><b>Trajectories + MLG</b><span>Dráhy projektilů a automatický water clutch při pádu. Utility, které se hodí v každé hře.</span></div>
@@ -359,8 +359,8 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
         </div>
       </div>
       <p style="margin:0 0 18px;padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:10px;font-size:13px;line-height:1.5">
-        <b>Pozor:</b> GitHub účet je pozastavený, takže stahování nejde přes GitHub. Všechny soubory jsou teď na
-        <a href="https://gofile.io/d/SIGBQeMq" target="_blank" rel="noopener">Gofile</a> a odkazy níže fungují.
+        Soubory jsou na
+        <a href="https://gofile.io/d/SIGBQeMq" target="_blank" rel="noopener">Gofile</a> a Catboxu, odkazy níže fungují.
         Kontrolní SHA-256 najdeš v <b>SHA256.txt</b> uvnitř ZIPu.
       </p>
       <div class="dl">
@@ -468,7 +468,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
       <details><summary>Odkud bere Spotify skladbu?</summary><p>Overlay čte Windows media session, takže funguje i bez přihlášení. Když se ve hře přihlásíš (F7 → Music → Spotify), načte se přímo Spotify Web API — playlisty, skladby a ovládání přehrávání. Přihlášení jde dokončit i vložením kódu z prohlížeče.</p></details>
       <details><summary>Přihlášení Spotify mě přepne do jiného okna. Jde to bez toho?</summary><p>Ano. Menu už prohlížeč neotevírá samo – jen připraví odkaz. Klikneš na <b>Otevřít prohlížeč</b> (nebo odkaz otevřeš na telefonu a vložíš kód tlačítkem <b>Vložit</b>). Po potvrzení se hra sama vrátí dopředu. Přihlášení stačí udělat jednou, token se pamatuje.</p></details>
       <details><summary>Proč se mi appka na telefonu zavírala?</summary><p>Ve verzi 1.2.5 je nový renderer LTW, který umí OpenGL 3.2 potřebné pro moderní Minecraft, a opravený pád při ukončení hry. Diagnostika navíc ukládá logcat. Kdyby hra přesto spadla, ukáže se dialog s důvodem a tlačítkem <b>Sdílet</b> – pošli mi log a opravím skutečnou příčinu. Pomůže i <b>Spustit bez modů</b> nebo <b>Nastavení → Diagnostika</b>.</p></details>
-      <details><summary>Jsou v Music menu reklamy?</summary><p>Ne. Menu samo žádné reklamy neobsahuje. Music menu je jen Spotify a žádné reklamy neobsahuje – ty řeší až Spotify Premium.</p></details>
+      <details><summary>Jsou v Music menu reklamy?</summary><p>Ne. Music menu je jen Spotify a žádné reklamy neobsahuje – ty řeší až Spotify Premium.</p></details>
       <details><summary>Proč se YouTube a Apple Music neovládají ve hře?</summary><p>YouTube a Apple Music byly odstraněny. Music menu (F7) je teď jen Spotify a playlisty se průběžně synchronizují. Když se objeví „insufficient scope“, odhlášení se a přihlášení znovu.</p></details>
       <details><summary>Jak funguje Auto AH Sell?</summary><p>Zapni modul v ClickGUI (Misc → AutoAHSell) a nastav <b>Item</b> (výchozí ender_chest), <b>Price</b> a <b>Delay</b>. Modul otevře inventář (je to vidět), vezme item, rozdělí stack po jednom do hotbaru a pro každý kus pošle <b>/ah sell cena</b>. Když server otevře potvrzovací okno, chvíli počká a klikne Confirm. Časování je záměrně lidské: pauzy kolem Delay (výchozí 700 ms, minimum 250 ms) se náhodně mění, občas přijde delší pauza a sloty se prodávají v jiném pořadí – proto to na DonutSMP nepadá jako bot.</p></details>
       <details><summary>Jde dostat Discord kameru nebo sdílení obrazovky do hry?</summary><p>Discord nemá veřejné API, které by vložilo jeho kameru nebo sdílení obrazovky do jiné hry. V Overlay editoru proto zapneš vlastní kamerový náhled v rohu obrazovky (velikost, průhlednost, přední/zadní kamera). Discord nech běžet vedle hry – náhled ti kameru ukáže přímo ve hře.</p></details>

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <title>ZelvakClient – Minecraft Client 1.3.3 (ZDARMA)</title>
-<meta name="description" content="ZelvakClient – Minecraft Fabric client 1.3.3 se zimním stylem, BaseFinderem, bypassy, Spotify menu a Zelvak Inject. Stáhni pro PC i Android zdarma.">
-<meta name="keywords" content="ZelvakClient, Zelvak Client, Zelvak, minecraft client, Minecraft Fabric client, BaseFinder, AmethystBypass, DeepslateBypass, DonutSMP, Zelvak Inject, Minecraft 1.21.11">
+<meta name="description" content="ZelvakClient 1.3.3 – Minecraft Fabric client se zimním menu, BaseFinderem, Schematic/WorldEdit CUI, Discord Rich Presence, Spotify, YouTube overlayem a Zelvak Inject. Stáhni pro PC i Android zdarma.">
+<meta name="keywords" content="ZelvakClient, Zelvak Client, Zelvak, minecraft client, Minecraft Fabric client, BaseFinder, Schematic, WorldEdit CUI, Discord Rich Presence, YouTube overlay, Spotify, AmethystBypass, DeepslateBypass, DonutSMP, Zelvak Inject, Zelvak Mobile, Minecraft 1.21.11">
 <meta name="author" content="Zelvak Client">
 <link rel="canonical" href="https://matastomas-bit.github.io/zelvak-client/">
 <meta property="og:type" content="website">
@@ -16,7 +16,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0a1626">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zelvak Client","version":"1.3.3","applicationCategory":"GameApplication","operatingSystem":"Windows, Android","description":"Zelvak Client 1.3.3 – Minecraft Fabric client s BaseFinderem, bypassy a zimním rozhraním.","url":"https://matastomas-bit.github.io/zelvak-client/","offers":{"@type":"Offer","price":"0","priceCurrency":"CZK"}}
+{"@context":"https://schema.org","@graph":[
+{"@type":"SoftwareApplication","name":"Zelvak Client","alternateName":["ZelvakClient","Zelvak"],"softwareVersion":"1.3.3","version":"1.3.3","applicationCategory":"GameApplication","operatingSystem":"Windows 10/11, Android 5+","description":"Zelvak Client 1.3.3 – Minecraft Fabric client se zimním menu, BaseFinderem, Schematic/WorldEdit CUI, Discord Rich Presence, Spotify a Zelvak Inject.","url":"https://matastomas-bit.github.io/zelvak-client/","isAccessibleForFree":true,"featureList":["BaseFinder","Schematic","WorldEdit CUI","Discord Rich Presence","YouTube overlay","Spotify","Zelvak Inject","Zelvak Mobile","FreeLook","Waypointy","Vánoční pláště"],"offers":{"@type":"Offer","price":"0","priceCurrency":"CZK","url":"https://matastomas-bit.github.io/zelvak-client/"}},
+{"@type":"WebSite","name":"Zelvak Client","url":"https://matastomas-bit.github.io/zelvak-client/","inLanguage":"cs"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Windows hlásí, že soubor může poškodit počítač. Co s tím?","acceptedAnswer":{"@type":"Answer","text":"Je to SmartScreen u nového souboru bez digitálního podpisu, ne nález viru. Klikni na Více informací a Spustit přesto. Trvalé řešení je podpis kódu důvěryhodným certifikátem a získání reputace; postup je v SIGNING.md."}},
+{"@type":"Question","name":"Jak ověřím, že jsem stáhl pravý soubor?","acceptedAnswer":{"@type":"Answer","text":"V ZIPu je SHA256.txt. Porovnej hash z Get-FileHash s obsahem SHA256.txt. Shoda znamená, že soubor je nezměněný."}},
+{"@type":"Question","name":"Jak fungují Schematic a WorldEdit CUI?","acceptedAnswer":{"@type":"Answer","text":"Fungují jen v singleplayeru. Schematic načítá .schematic/.schem soubory, zobrazuje vrstvy a chybějící bloky, CAPS LOCK přepíná režim a držení V tiskne. WorldEdit CUI (G) nastavuje pos1/pos2/origin a umí set, copy, paste a clear."}},
+{"@type":"Question","name":"Proč už v menu není prázdná obrazovka?","acceptedAnswer":{"@type":"Answer","text":"Fontový override v GUI byl odstraněn a launcher má záložní zobrazení okna s jedním bezpečným reloadem po prvním načtení."}}
+]}
+]}
 </script>
 <style>
 :root{
@@ -36,6 +45,7 @@ body{
 }
 a{color:inherit;text-decoration:none}
 button{font:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
 
 /* ---------- password gate ---------- */
@@ -241,13 +251,14 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
 </header>
 
 <main id="top">
+  <h1 class="sr-only">Zelvak Client 1.3.3 – Minecraft Fabric client zdarma pro PC a Android</h1>
   <div class="wrap">
     <section class="hero">
       <div>
         <span class="kicker">FABRIC 1.21.11 &nbsp;•&nbsp; LEGIT FIRST</span>
         <h2>Minecraft, ale <span>podle tvého</span>.</h2>
-        <p>ZelvakClient je odlehčený launcher a klientský mod pro Fabric. Přináší čisté zimní menu, FreeLook s plynulou animací, BaseFinder, Spotify hudbu, Dynamic Island, Vánoční a další pláště, ZelvakTag s avatary přátel a samostatnou aplikaci Zelvak Inject — bez zbytečného balastu.</p>
-        <div class="month"><span>❄ Sníh a led</span><span>☕ Teplý styl</span><span>⌘ Normální písmo</span><span>⚡ Rychle, čistě, bez zbytečností</span></div>
+        <p>ZelvakClient je odlehčený launcher a klientský mod pro Fabric. Přináší čisté zimní menu, FreeLook s plynulou animací, BaseFinder, Schematic a WorldEdit CUI, Discord Rich Presence, Spotify hudbu, YouTube overlay, Dynamic Island, vánoční pláště, ZelvakTag s avatary přátel a samostatnou aplikaci Zelvak Inject — bez zbytečného balastu.</p>
+        <div class="month"><span>❄ Sníh a led</span><span>☕ Teplý styl</span><span>⌘ Standardní písmo Windows</span><span>⚡ Rychle, čistě, bez zbytečností</span></div>
         <div class="cta">
           <a class="btn" href="#download">Stáhnout launcher</a>
           <a class="btn ghost" href="#features">Prohlédnout funkce</a>
@@ -285,8 +296,10 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
         <div class="feat"><div class="ic">⚑</div><b>Waypointy</b><span>Libovolně mnoho bodů s názvem, barvou, beamem a vzdáleností. Přesně jako na Lunaru.</span></div>
         <div class="feat"><div class="ic">♪</div><b>Music ve hře</b><span>Už jen Spotify (F7). Přihlášení v prohlížeči nebo kódem, playlisty se průběžně synchronizují a skladby ovládáš přímo ve hře. Dynamic Island ukazuje aktuální track.</span></div>
         <div class="feat"><div class="ic">♥</div><b>Friends + ZelvakTag</b><span>Nametagová značka, ne ESP. Přátelé z launcheru mají u jména i svou profilovku – viditelnou jen na očích, žádné značky zdí ani boxy.</span></div>
-        <div class="feat"><div class="ic">❄</div><b>Vánoční a další pláště</b><span>Nové Zelvak pláště (Vánoce, Sníh, Halloween, Sakura, Aurora, Zlato). Vybereš je v Cosmetics – hned je vidíš v náhledu launcheru i ve hře.</span></div>
+        <div class="feat"><div class="ic">❄</div><b>Vánoční a další pláště</b><span>Nové Zelvak pláště (Vánoce, <b>Santa, Candy Cane, Vánoční strom, Dárek, Vločka</b>, Sníh, Halloween, Sakura, Aurora, Zlato). Vybereš je v Cosmetics – hned je vidíš v náhledu launcheru i ve hře.</span></div>
         <div class="feat"><div class="ic">⚡</div><b>Zelvak Inject</b><span>Samostatná aplikace najde běžící Minecraft, nainstaluje mod do jeho instance a přepne na okno hry. Žádný DLL inject ani úprava paměti.</span></div>
+        <div class="feat"><div class="ic">▦</div><b>Schematic + WorldEdit CUI</b><span>V singleplayeru otevřeš .schematic/.schem soubor vlastním prohlížečem, uvidíš vrstvy podle barev a chybějící bloky. Caps Lock přepne režim, držení V tiskne a auto-place ukládá dávkami po 64 blocích za tick, takže to neseká. WorldEdit CUI (G) umí pos1/pos2/origin, set, copy, paste i clear.</span></div>
+        <div class="feat"><div class="ic">▶</div><b>Discord Rich Presence + YouTube overlay</b><span>Launcher ukazuje, co zrovna hraješ, přes Discord Rich Presence. V hře přibyl YouTube overlay a Spotify zůstává v menu F7. Žádné cizí API ani čtení obrazovky – jen přehledné informace.</span></div>
         <div class="feat"><div class="ic">◍</div><b>Host to LAN</b><span>Otevři singleplayer svět kamarádům. Mod vypíše adresu, kterou stačí zadat v Direct Connect.</span></div>
         <div class="feat"><div class="ic">▤</div><b>Packs per profile</b><span>Resource packy a datapacky pro každý profil zvlášť, s kontrolou verze podle pack.mcmeta.</span></div>
         <div class="feat"><div class="ic">⌁</div><b>Společné nastavení</b><span>Téma, HUD, keybindy i moduly se sdílí mezi všemi profily a verzemi. Přepneš verzi, vše zůstane.</span></div>
@@ -294,7 +307,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
       </div>
       <div class="strip">
         <div class="stat"><b>1.21.11</b><span>FABRIC</span></div>
-        <div class="stat"><b>100+</b><span>MODULŮ A HUD PRVKŮ</span></div>
+        <div class="stat"><b>144</b><span>MODULŮ V LAUNCHERU</span></div>
         <div class="stat"><b>F7</b><span>MUSIC MENU VE HŘE</span></div>
         <div class="stat"><b>1</b><span>SPOLEČNÉ NASTAVENÍ</span></div>
       </div>
@@ -322,11 +335,16 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
       <div class="sechead">
         <div>
           <h3>Co je nového</h3>
-          <p>Poslední velká aktualizace: přepínání účtů přímo ve hře, Music menu, jednoduchá makra, friends ve hře a spousta nových modulů. Verze 1.3.0 přidává AutoLeave (odpojí tě, když se k tobě někdo portne) a AntiVanish (napíše do chatu, když se někdo teleportuje, je neviditelný nebo je ve vanishi). Všechny moduly si teď berou itemy z inventáře do ruky a AutoTool je opravený. Auto AH Sell z 1.2.9 prodává označené itemy přes /ah sell s lidským časováním.</p>
+          <p>Verze 1.3.3 přidává Schematic a WorldEdit CUI, Discord Rich Presence, YouTube overlay a opravuje prázdnou obrazovku způsobenou vlastním fontem. Starší novinky: přepínání účtů ve hře, Music menu, makra, friends, AutoLeave, AntiVanish a Auto AH Sell. Všechny moduly si berou itemy z inventáře do ruky a AutoTool je opravený.</p>
         </div>
       </div>
       <div class="grid">
+<div class="feat"><div class="ic">▦</div><b>v1.3.3 – Schematic a WorldEdit CUI</b><span>Singleplayerová editace bez serveru: načtení .schematic/.schem souboru přes file browser, barevné vrstvy a zvýraznění chybějících bloků. CAPS LOCK přepíná režim, držení V tiskne, auto-place ukládá po 64 blocích za tick. WorldEdit CUI se otevírá klávesou G a umí pos1, pos2, origin, set, copy, paste a clear.</span></div>
+        <div class="feat"><div class="ic">▶</div><b>v1.3.3 – Discord a YouTube</b><span>Launcher má Discord Rich Presence – ukazuje název a verzi klientu. V modu přibyl YouTube overlay. Spotify menu (F7) zůstává a playlisty se dál synchronizují.</span></div>
+        <div class="feat"><div class="ic">✔</div><b>v1.3.3 – Oprava prázdné obrazovky</b><span>Odstraněn fontový override, který způsoboval prázdnou obrazovku v menu i的一些in-game GUI. Launcher má záložní zobrazení okna a jeden bezpečný reload po prvním načtení. Písmo je zpět standardní Windows font.</span></div>
         <div class="feat"><div class="ic">❄</div><b>v1.3.3 – Zimní update</b><span>Všechno je teď v zimním stylu: sníh, ledové barvy a jemný frost efekt. Menu má klasický Windows rámec s lištou, tlačítky a stavovým řádkem. Přibyly přehledné dialogy a konzistentní rozvržení napříč webem, launcherem i hrou. Nic se nezměnilo na funkčnosti – všechny moduly a stahování fungují stejně.</span></div>
+        <div class="feat"><div class="ic">⚡</div><b>v1.3.3 – Oprava sekání a FPS</b><span>Hra se už <b>neseká</b> ani s vypnutým BaseFinderem. ZelvakTag a CustomCape přestaly číst soubory z disku každý snímek, vyhledávání modulů je teď okamžité místo procházení všech 118, Spotify a Dynamic Island čtou konfiguraci méně často a jen když jsou zapnuté, seznam modulů se nepřestavuje každý snímek. Launcher pozastaví sníh, částice a GIF, když není v popředí. Výsledek: plynulých 60+ FPS i na slabším PC.</span></div>
+        <div class="feat"><div class="ic">🎄</div><b>v1.3.3 – Vánoční cosmetics + Deepslate chestky</b><span>Přibylo pět nových vánočních plášťů – <b>Santa, Candy Cane, Vánoční strom, Dárek a Vločka</b>. <b>DeepslateBypass</b> teď kromě rud označí i <b>chestky, barely, shulkery, hoppery, pece a ender chesty</b> (vypneš to přepínačem „Mark containers“), takže najdeš i schovanou base v deepslate vrstvě. Opravený <b>Zelvak Inject</b> spolehlivěji najde běžící hru a nainstaluje mod do správné složky mods.</span></div>
         <div class="feat"><div class="ic">◆</div><b>v1.3.3 – BaseFinder, Amethyst a Deepslate bypass</b><span>BaseFinder teď projde chunky po částech (bez sekání), označí celý čtverec kolem base a u něj přehledně ukáže počet chestů, barelů, shulkerů, hopperů, pecí, podezřelých bloků a stav <b>NEZNIČENÉ / ZNIČENÉ</b> podle otevřených containerů. Přibyly nastavitelné „podezřelé bloky“ a dvoubarevné pozadí popisků. Corz-style mřížka jde nastavit až na 100 chunků. Nové moduly <b>AmethystBypass</b> (čtverec kolem jeskyně) a <b>DeepslateBypass</b> (deepslate rudy) kreslí jen na klientu – žádné packety na server.</span></div>
         <div class="feat"><div class="ic">!</div><b>v1.3.0 – AutoLeave, AntiVanish a itemy z inventáře</b><span>AutoLeave tě odpojí příkazem (výchozí /hub), když se k tobě někdo teleportuje. AntiVanish napíše do chatu, když se někdo objeví u tebe, je neviditelný nebo je v tabu bez postavy (vanish). Každý modul, který potřebuje item z inventáře (potky, gapple, jídlo, perly, krystaly, bloky, vodu, kotvu, rybářský prut), si ho teď sám přetáhne do ruky. AutoTool vybírá jen opravdové nástroje pro daný blok a bere je i z inventáře.</span></div>
         <div class="feat"><div class="ic">$</div><b>v1.2.9 – Auto AH Sell s lidským časováním</b><span>Nový modul pro DonutSMP: nastavíš item, cenu a delay. Modul otevře inventář (je to vidět), vezme ender chestky, rozdělí je po jednom do hotbaru, pošle /ah sell s cenou a klikne potvrzení. Aby to nepůsobilo jako bot, každá pauza je náhodná, občas se na chvíli zastaví a sloty prodává v jiném pořadí. Stejné lidské chování mají i KillAura, AutoClicker, AimAssist a WTap. Modul je zabalený přímo v launcheru – na PC se sám aktualizuje ve všech profilech a na telefonu je součástí APK.</span></div>
@@ -334,7 +352,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
         <div class="feat"><div class="ic">❄</div><b>v1.3.3 – Nové pláště, avatary a Zelvak Inject.exe</b><span>Přibylo šest nových klientských plášťů – <b>Vánoce, Sníh, Halloween, Sakura, Aurora a Zlato</b>. Vybereš je v Cosmetics a uvidíš je okamžitě v 3D náhledu launcheru i na postavě ve hře. Opraveno je i fungování CustomCape (textura se registrovaně načítá a mod ji dosadí do skinu). <b>ZelvakTag</b> už není ESP: značku dává jen do normálního nametagu a přátelům z launcheru přidává jejich profilovku u jména. Nová samostatná aplikace <b>ZelvakInject.exe</b> udělá totéž co inject v launcheru – najde hru, doplní jar a přepne okno.</span></div>
         <div class="feat"><div class="ic">✔</div><b>v1.2.4 – start na telefonu</b><span>Nový renderer LTW zvládne OpenGL 3.2, které moderní Minecraft potřebuje. Když hra spadne, uvidíš dialog s důvodem a tlačítkem <b>Kopírovat log</b> místo tichého zavření. Opravený je i bezpečný režim bez modů.</span></div>
         <div class="feat"><div class="ic">✔</div><b>v1.2.3 – stabilita</b><span>Opravené náhodné zavírání Android appky na Androidu 14+ (runtime se po rozbalení zamkne jen pro čtení). KillAura a Clutch už nezpůsobují sekání – cíle se hledají chytřeji a bez zbytečných packetů. OreESP má výběr všech rud a Spotify přihlášení už tě nepřepne do jiného okna samo.</span></div>
-        <div class="feat"><div class="ic">▤</div><b>Zelvak Mobile (Android)</b><span>Vlastní Android launcher – žádný PojavLauncher. Microsoft účet, všech 118 modulů, vlastní tlačítka, Spotify menu ve hře a příprava Minecraftu + Fabric + modu přímo v telefonu. Stáhni APK v sekci Download.</span></div>
+        <div class="feat"><div class="ic">▤</div><b>Zelvak Mobile (Android)</b><span>Vlastní Android launcher – žádný PojavLauncher. Microsoft účet, 144 modulů v launcheru a 118 v mobilní verzi, vlastní tlačítka, Spotify menu ve hře a příprava Minecraftu + Fabric + modu přímo v telefonu. Stáhni APK v sekci Download.</span></div>
         <div class="feat"><div class="ic">⇄</div><b>Přepínání účtů ve hře</b><span>Otevři hack client (pravý Shift) → Účty, vyber jiný účet a potvrď. Hra se sama restartuje s vybraným účtem. Na telefonu stejně přes MENU → Účty.</span></div>
         <div class="feat"><div class="ic">▦</div><b>Lunar-style ClickGUI</b><span>Boční navigace, karty modulů, přepínače a panel nastavení. Filtry All / HUD / Legit / Risky a rychlé hledání.</span></div>
         <div class="feat"><div class="ic">⌘</div><b>Jednoduchá makra</b><span>Každé makro má jen tři věci: příkaz, klávesu a prodlevu. Žádné nahrávání ani složité kroky. Ukládá se do config/zelvak-macros.json.</span></div>
@@ -360,8 +378,11 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
       </div>
       <p style="margin:0 0 18px;padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:10px;font-size:13px;line-height:1.5">
         Soubory jsou na
-        <a href="https://gofile.io/d/SIGBQeMq" target="_blank" rel="noopener">Gofile</a> a Catboxu, odkazy níže fungují.
+        <a href="https://gofile.io/d/ydkWXz1H" target="_blank" rel="noopener">Gofile</a> a Catboxu, odkazy níže fungují.
         Kontrolní SHA-256 najdeš v <b>SHA256.txt</b> uvnitř ZIPu.
+      </p>
+      <p style="margin:0 0 18px;padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:10px;font-size:13px;line-height:1.5">
+        <b>Windows hlásí "Tato aplikace může poškodit váš počítač"?</b> To je SmartScreen u nového nepodepsaného .exe, ne antivirová kontrola. Soubor je stejný jako v ostatních balíčcích a hash níže ho ověří. Klikni na <b>Více informací → Spustit přesto</b>. Trvale to zmizí až po podpisu kódu a nazbírání reputace – postup je v <b>SIGNING.md</b> v release složce.
       </p>
       <div class="dl">
         <div class="dlcard">
@@ -390,7 +411,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
       <div class="dl" style="margin-top:18px">
         <div class="dlcard">
           <h4>Zelvak Mobile</h4>
-          <p>Vlastní Android launcher – žádný PojavLauncher. Přihlášení Microsoftem, všech 118 modulů, vlastní rychlá tlačítka, Spotify menu ve hře a příprava Minecraftu, Fabricu a Zelvak modu přímo v telefonu.</p>
+          <p>Vlastní Android launcher – žádný PojavLauncher. Přihlášení Microsoftem, 144 modulů v launcheru a 118 v mobilní verzi, vlastní rychlá tlačítka, Spotify menu ve hře a příprava Minecraftu, Fabricu a Zelvak modu přímo v telefonu.</p>
           <div class="meta">
             <div><span>Platforma</span><b>Android 5+</b></div>
             <div><span>Moduly</span><b>118</b></div>
@@ -422,7 +443,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
             <div><span>Loader</span><b>Fabric 0.18.1+</b></div>
             <div><span>Forma</span><b>.jar</b></div>
           </div>
-          <a class="btn" href="https://gofile.io/d/SIGBQeMq" target="_blank" rel="noopener">Stáhnout zelvak-client.jar</a>
+          <a class="btn" href="https://gofile.io/d/ydkWXz1H" target="_blank" rel="noopener">Stáhnout zelvak-client.jar</a>
           <p style="margin-top:10px;font-size:12px;opacity:.7">Otevře se složka na Gofile – vyber <b>zelvak-client.jar</b>.</p>
         </div>
         <div class="steps">
@@ -445,7 +466,7 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
             <div><span>Forma</span><b>Portable .exe</b></div>
             <div><span>Heslo downloadů</span><b>1212</b></div>
           </div>
-          <a class="btn" href="https://gofile.io/d/rJMF8bF8" target="_blank" rel="noopener" download>Stáhnout ZelvakInject.exe</a>
+          <a class="btn" href="https://gofile.io/d/ydkWXz1H" target="_blank" rel="noopener" download>Stáhnout ZelvakInject.exe</a>
         </div>
         <div class="steps">
           <h4>Jak použít inject</h4>
@@ -477,6 +498,10 @@ header{background:#081522dd!important;border-bottom-color:#bae6fd22!important}
       <details><summary>Jak funguje ZelvakTag?</summary><p>Jména z tvého friends seznamu dostanou v nametagu stejnou značku jako ty a u jména i svou profilovku. Je to jen klientská úprava nametagu, ne ESP – nic se nekreslí přes zdi.</p></details>
        <details><summary>Jak funguje Zelvak Inject?</summary><p>Samostatná aplikace ZelvakInject.exe (nebo Game → Připojit ke spuštěné hře v launcheru) najde běžící Minecraft, zkontroluje zelvak-client.jar v mods složce té instance, případně ho nainstaluje a přepne na okno hry. Fabric mod nelze načíst do už běžícího JVM – pokud jar chyběl, restartuj hru. Žádný DLL inject ani úprava paměti.</p></details>
        <details><summary>Kde najdu nové pláště?</summary><p>V launcheru otevři Cosmetics → Zelvak pláště. Vyber Vánoce, Sníh, Halloween, Sakura, Aurora nebo Zlato. Plášť se hned ukáže v 3D náhledu a po spuštění hry i na tvé postavě. Vidíš ho jen ty, na server se nic neodesílá.</p></details>
+       <details><summary>Windows hlásí, že soubor může poškodit počítač. Co s tím?</summary><p>Je to SmartScreen u nového souboru bez digitálního podpisu, ne nález viru. Rozklikni <b>Více informací</b> a <b>Spustit přesto</b>. Varianta bez varování vyžaduje podpis kódu důvěryhodným certifikátem a čas na získání reputace – přesný postup je v SIGNING.md. Self-signed cert nebo "vypnout SmartScreen" nedoporučuju.</p></details>
+       <details><summary>Jak ověřím, že jsem stáhl pravý soubor?</summary><p>V ZIPu je <b>SHA256.txt</b> s hashi ZelvakClient.exe, ZelvakInject.exe, ZelvakMobile.apk a zelvak-client.jar. V PowerShellu spusť <b>Get-FileHash .\ZelvakClient.exe -Algorithm SHA256</b> a porovnej výsledek s obsahem souboru. Sedí-li hash, soubor je nezměněný.</p></details>
+       <details><summary>Jak fungují Schematic a WorldEdit CUI?</summary><p>Jen v singleplayeru. V modu otevřeš Schematic, vybereš soubor .schematic/.schem, nastavíš vrstvy a barvy a držením V místo ukládáš. CAPS LOCK přepíná režim. WorldEdit CUI otevřeš klávesou G, nastavíš pos1/pos2/origin a příkazy set, copy, paste nebo clear. Auto-place chodi dávkami po 64 blocích za tick, aby se hra nesekala.</p></details>
+       <details><summary>Proč už v menu není prázdná obrazovka?</summary><p>Původní vlastní TTF font v GUI způsoboval prázdný frame. Fontový override byl odstraněn a menu používá standardní písmo Windows. Launcher navíc po prvním načtení udělá jeden bezpečný reload, když se první frame nevykreslí.</p></details>
     </div>
   </section>
 </main>
